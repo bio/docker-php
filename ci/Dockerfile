@@ -1,11 +1,12 @@
-FROM debian:jessie
+FROM debian:stretch
 
 RUN apt-get update && apt-get install -y \
   apt-transport-https \
   lsb-release \
   ca-certificates \
   curl \
-  git
+  git \
+  netcat-openbsd
 RUN curl -sS https://packages.sury.org/php/apt.gpg -o /etc/apt/trusted.gpg.d/php.gpg
 RUN touch /etc/apt/sources.list.d/php.list
 RUN echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list
